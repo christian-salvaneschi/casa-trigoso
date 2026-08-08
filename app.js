@@ -32,6 +32,7 @@ Object.assign(it, {
   shuttlePeriod: 'Campeggi · Riva Trigoso · Sestri Levante · dall’1 al 23 agosto 2026'
 });
 it.wasteBags = 'Per la plastica e l’indifferenziata utilizzare il sacchetto fornito.';
+it.wasteGuide = 'Consulta la guida Aprica · Zona 3';
 Object.assign(it, {
   delivery: 'Consegne a domicilio',
   onlineGroceries: 'Spesa online',
