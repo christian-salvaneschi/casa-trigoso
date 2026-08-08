@@ -86,9 +86,13 @@
       <div class="heading"><div><p class="eyebrow" data-i18n="calendarLabel">Disponibilités</p><h2 data-i18n="calendarTitle">Calendrier des réservations</h2></div><p data-i18n="calendarIntro">Consultez les périodes déjà réservées avant de demander vos dates.</p></div>
       <div class="calendar-shell">
         <div class="calendar-topbar"><span><i></i><span data-i18n="calendarLegend">Les événements affichés correspondent aux périodes réservées</span></span><a href="https://calendar.google.com/calendar/u/0?cid=MGUzMmJhZTFkMjRiMDYxZDAxYjJmMjAwMDU0YzQzYTExODc2N2U1MTk5ZTdlNWU4NjI1ZTQ0ODA2NTU0ZjhjOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" rel="noopener"><span data-i18n="openCalendar">Ouvrir dans Google Calendar</span> ↗</a></div>
-        <iframe title="Calendrier des réservations Casa Trigoso" src="https://calendar.google.com/calendar/embed?src=0e32bae1d24b061d01b2f200054c43a118767e5199e7e5e8625e44806554f8c8%40group.calendar.google.com&amp;color=%23D87155&amp;bgcolor=%23FFFFFF&amp;ctz=Europe%2FRome&amp;hl=fr&amp;mode=MONTH&amp;showTitle=0&amp;showPrint=0&amp;showCalendars=0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="native-calendar" aria-label="Calendrier des réservations">
+          <div class="native-calendar-nav"><button type="button" id="calendar-prev" aria-label="Mois précédent">‹</button><strong id="calendar-month"></strong><button type="button" id="calendar-next" aria-label="Mois suivant">›</button></div>
+          <div class="calendar-weekdays" id="calendar-weekdays"></div>
+          <div class="calendar-grid" id="calendar-grid" aria-live="polite"></div>
+        </div>
       </div>
-      <p class="calendar-note" data-i18n="calendarNote">Le calendrier est synchronisé avec Google Calendar. Si l’aperçu n’est pas visible, utilisez le bouton ci-dessus.</p>
+      <p class="calendar-note" data-i18n="calendarNote">Le calendrier est synchronisé automatiquement avec Google Calendar.</p>
     </section>
 
     <section class="section reminder"><div class="heading"><div><p class="eyebrow" data-i18n="reminder">Petit rappel</p><h2 data-i18n="beforeLeaving">Avant de partir</h2></div></div>

@@ -45,7 +45,7 @@ Object.assign(it, {
   calendarIntro: 'Controlla i periodi già prenotati prima di richiedere le tue date.',
   calendarLegend: 'Gli eventi visualizzati corrispondono ai periodi prenotati',
   openCalendar: 'Apri in Google Calendar',
-  calendarNote: 'Il calendario è sincronizzato con Google Calendar. Se l’anteprima non è visibile, usa il pulsante qui sopra.'
+  calendarNote: 'Il calendario è sincronizzato automaticamente con Google Calendar.'
 });
 const fr = {};
 document.querySelectorAll('[data-i18n]').forEach(el => fr[el.dataset.i18n] = el.textContent);
@@ -61,6 +61,69 @@ function setLanguage(lang){
 document.querySelectorAll('[data-lang]').forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
 setLanguage(localStorage.getItem('casa-trigoso-language')||'fr');
 document.querySelectorAll('.guide-grid details').forEach(card=>card.addEventListener('toggle',()=>{if(card.open)document.querySelectorAll('.guide-grid details[open]').forEach(other=>{if(other!==card)other.open=false})}));
+let bookingEvents = [];
+let calendarCursor = new Date();
+calendarCursor = new Date(calendarCursor.getFullYear(), calendarCursor.getMonth(), 1);
+
+function parseCalendarDate(value){
+  const match = value.match(/(\d{4})(\d{2})(\d{2})/);
+  return match ? new Date(Number(match[1]), Number(match[2])-1, Number(match[3])) : null;
+}
+
+function parseIcs(text){
+  return text.replace(/\r?\n[ \t]/g,'').split('BEGIN:VEVENT').slice(1).map(block=>{
+    const start=(block.match(/DTSTART[^:]*:(\d{8})/)||[])[1];
+    const end=(block.match(/DTEND[^:]*:(\d{8})/)||[])[1];
+    return {start:parseCalendarDate(start||''),end:parseCalendarDate(end||'')};
+  }).filter(event=>event.start&&event.end);
+}
+
+function isBooked(date){
+  return bookingEvents.some(event=>date>=event.start&&date<event.end);
+}
+
+function renderCalendar(){
+  const grid=document.getElementById('calendar-grid');
+  const weekdays=document.getElementById('calendar-weekdays');
+  const title=document.getElementById('calendar-month');
+  if(!grid||!weekdays||!title)return;
+  const lang=document.documentElement.lang==='it'?'it-IT':'fr-FR';
+  title.textContent=new Intl.DateTimeFormat(lang,{month:'long',year:'numeric'}).format(calendarCursor);
+  const monday=new Date(2026,0,5);
+  weekdays.innerHTML='';
+  for(let i=0;i<7;i++){
+    const day=new Date(monday);day.setDate(day.getDate()+i);
+    const label=document.createElement('span');
+    label.textContent=new Intl.DateTimeFormat(lang,{weekday:'short'}).format(day);
+    weekdays.appendChild(label);
+  }
+  grid.innerHTML='';
+  const year=calendarCursor.getFullYear(),month=calendarCursor.getMonth();
+  const first=new Date(year,month,1);
+  const offset=(first.getDay()+6)%7;
+  const days=new Date(year,month+1,0).getDate();
+  const today=new Date();today.setHours(0,0,0,0);
+  for(let i=0;i<offset;i++)grid.appendChild(document.createElement('span')).className='empty-day';
+  for(let day=1;day<=days;day++){
+    const date=new Date(year,month,day);
+    const cell=document.createElement('span');
+    cell.className='calendar-day';
+    cell.textContent=String(day);
+    if(date.getTime()===today.getTime())cell.classList.add('today');
+    if(isBooked(date)){
+      cell.classList.add('booked');
+      const status=document.createElement('small');
+      status.textContent=document.documentElement.lang==='it'?'Prenotato':'Réservé';
+      cell.appendChild(status);
+    }
+    grid.appendChild(cell);
+  }
+}
+
+fetch('calendar.ics',{cache:'no-store'}).then(response=>response.text()).then(text=>{bookingEvents=parseIcs(text);renderCalendar()}).catch(renderCalendar);
+document.getElementById('calendar-prev')?.addEventListener('click',()=>{calendarCursor=new Date(calendarCursor.getFullYear(),calendarCursor.getMonth()-1,1);renderCalendar()});
+document.getElementById('calendar-next')?.addEventListener('click',()=>{calendarCursor=new Date(calendarCursor.getFullYear(),calendarCursor.getMonth()+1,1);renderCalendar()});
+new MutationObserver(renderCalendar).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 const links=[...document.querySelectorAll('.mobile-nav a[href^="#"]')];
 new IntersectionObserver(entries=>{const seen=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(seen)links.forEach(a=>a.classList.toggle('active',a.hash===`#${seen.target.id}`))},{rootMargin:'-20% 0px -65%',threshold:[0,.2,.6]}).observe(document.querySelector('#home'));
 ['guide','rates'].forEach(id=>{const el=document.getElementById(id);new IntersectionObserver(entries=>{if(entries[0].isIntersecting)links.forEach(a=>a.classList.toggle('active',a.hash===`#${id}`))},{rootMargin:'-20% 0px -65%',threshold:.1}).observe(el)});
