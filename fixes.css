@@ -300,6 +300,16 @@
   font-size: 1.1rem;
 }
 
+.useful-icon svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .places-grid {
   display: grid;
   grid-template-columns: repeat(3,1fr);

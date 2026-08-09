@@ -41,6 +41,10 @@ Object.assign(it, {
 });
 it.shopping = 'Spesa';
 Object.assign(it, {
+  parking: 'Parcheggi',
+  easyParkText: 'Per pagare i parcheggi a pagamento conviene installare l’app.'
+});
+Object.assign(it, {
   calendarLabel: 'Disponibilità',
   calendarTitle: 'Calendario prenotazioni',
   calendarIntro: 'Controlla i periodi già prenotati prima di richiedere le tue date.',
