@@ -1,0 +1,367 @@
+/* Le schede chiuse mantengono la propria altezza quando una scheda vicina è aperta. */
+.guide-grid {
+  align-items: start;
+}
+
+.detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .65rem .8rem;
+  border-radius: 10px;
+  background: var(--foam);
+  color: var(--ink);
+  font-size: .78rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.detail-link:hover {
+  background: #dcebe3;
+}
+
+.owners-list {
+  margin: -.25rem 0 1rem;
+  padding: .7rem .8rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,.42);
+  color: var(--ink) !important;
+  font-size: .83rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.temporary {
+  padding-top: 20px;
+}
+
+.issue-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(216,113,85,.28);
+  border-radius: 20px;
+  background: #fff4eb;
+  box-shadow: 0 8px 28px rgba(18,63,59,.06);
+}
+
+.issue-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--coral);
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.issue-status {
+  color: var(--coral);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.issue-card h3 {
+  margin: .3rem 0 .4rem;
+  font-size: 1.35rem;
+}
+
+.issue-card p {
+  margin: 0;
+  color: #607470;
+}
+
+@media(max-width:760px) {
+  .temporary { padding-top: 0; }
+  .issue-card { padding: 1.15rem; gap: .85rem; }
+  .issue-icon { flex-basis: 40px; height: 40px; }
+}
+
+.useful {
+  background: #244f4a;
+  color: white;
+}
+
+.useful .section {
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+.bus-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1.2rem;
+  border-radius: 18px;
+  background: var(--sun);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.bus-card > span:nth-child(2) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.bus-card small,
+.place-group > p strong {
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .72rem;
+}
+
+.bus-card > b { font-size: 1.3rem; }
+
+.train-card {
+  background: #d9ebe6;
+}
+
+.shuttle-card {
+  background: #f4d8b4;
+}
+
+/* Sui monitor larghi l'illustrazione segue la griglia del contenuto,
+   invece di rimanere agganciata al bordo esterno dello schermo. */
+@media(min-width:1200px) {
+  .landscape {
+    width: min(50vw,780px);
+    right: max(40px,calc((100vw - 1600px)/2));
+    bottom: -10px;
+  }
+}
+
+.calendar-section {
+  max-width: 1180px;
+}
+
+.calendar-shell {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: white;
+  box-shadow: var(--shadow);
+}
+
+.calendar-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--line);
+  font-size: .82rem;
+}
+
+.calendar-topbar > span {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  color: #607470;
+}
+
+.calendar-topbar i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--coral);
+}
+
+.calendar-topbar a {
+  color: var(--coral);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.calendar-shell iframe {
+  display: block;
+  width: 100%;
+  height: 660px;
+  border: 0;
+}
+
+.native-calendar {
+  padding: 1rem;
+  background: #fffdf8;
+}
+
+.native-calendar-nav {
+  display: grid;
+  grid-template-columns: 42px 1fr 42px;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: 1rem;
+}
+
+.native-calendar-nav strong {
+  color: var(--ink);
+  font-size: 1.2rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.native-calendar-nav button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--foam);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.calendar-weekdays,
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+}
+
+.calendar-weekdays span {
+  padding: .55rem .2rem;
+  color: #6b7f7b;
+  font-size: .7rem;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.calendar-grid {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.calendar-day,
+.empty-day {
+  min-height: 88px;
+  padding: .55rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: white;
+  color: var(--ink);
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.empty-day { background: #f6f2e8; }
+
+.calendar-day.today {
+  box-shadow: inset 0 0 0 2px var(--sun);
+}
+
+.calendar-day.booked {
+  background: #f6d8ca;
+  color: #8f422f;
+}
+
+.calendar-day small {
+  display: block;
+  margin-top: .4rem;
+  color: var(--coral);
+  font-size: .65rem;
+  text-transform: uppercase;
+}
+
+.calendar-note {
+  margin: 1rem auto 0;
+  color: #6b7f7b;
+  font-size: .8rem;
+  text-align: center;
+}
+
+@media(max-width:760px) {
+  .calendar-topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .calendar-shell iframe { height: 570px; }
+  .native-calendar { padding: .6rem; }
+  .calendar-day,.empty-day { min-height: 62px; padding: .35rem; font-size: .72rem; }
+  .calendar-day small { font-size: 0; }
+  .calendar-day small::after { content: "•"; font-size: .9rem; }
+}
+
+.useful-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.55);
+  font-size: 1.1rem;
+}
+
+.useful-icon svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.places-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1rem;
+}
+
+.place-group {
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 18px;
+  background: rgba(255,255,255,.07);
+}
+
+.place-group > p {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin: 0;
+  padding: 1rem;
+}
+
+.place-group a {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .9rem 1rem;
+  border-top: 1px solid rgba(255,255,255,.12);
+  color: white;
+  text-decoration: none;
+}
+
+.place-group a:hover { background: rgba(255,255,255,.08); }
+
+.place-group a > span {
+  display: flex;
+  flex-direction: column;
+}
+
+.place-group a small {
+  color: rgba(255,255,255,.62);
+  font-size: .75rem;
+}
+
+.place-group a .distance::before {
+  content: "env. ";
+}
+
+html[lang="it"] .place-group a .distance::before {
+  content: "circa ";
+}
+
+@media(max-width:760px) {
+  .useful .section { padding-top: 70px; padding-bottom: 70px; }
+  .places-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#123f3b">
+  <meta name="description" content="Guide privée de l’appartement familial à Trigoso.">
+  <meta name="app-version" content="20260812-1">
+  <title>Casa Trigoso — Guide privé</title>
+  <link rel="stylesheet" href="styles.css?v=20260812-1">
+  <link rel="stylesheet" href="fixes.css?v=20260812-1">
+  <script>
+    (() => {
+      const current = document.querySelector('meta[name="app-version"]')?.content;
+      fetch(`version.json?t=${Date.now()}`, { cache: 'no-store' })
+        .then(response => response.json())
+        .then(({ version }) => {
+          if (!version || version === current || new URL(location.href).searchParams.get('v') === version) return;
+          const next = new URL(location.href);
+          next.searchParams.set('v', version);
+          location.replace(next);
+        })
+        .catch(() => {});
+    })();
+  </script>
+  <script src="app.js?v=20260812-1" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
+  <header class="hero" id="home">
+    <nav class="topbar" aria-label="Navigation principale">
+      <a class="brand" href="#home"><span class="logo">CT</span><span>Casa Trigoso</span></a>
+      <div class="top-actions">
+        <span class="private"><i></i><span data-i18n="private">Espace privé</span></span>
+        <div class="languages" role="group" aria-label="Langue / Lingua">
+          <button type="button" data-lang="fr" class="active" aria-pressed="true">FR</button>
+          <button type="button" data-lang="it" aria-pressed="false">IT</button>
+        </div>
+      </div>
+    </nav>
+    <div class="hero-copy">
+      <p class="eyebrow" data-i18n="eyebrow">Notre coin de Ligurie</p>
+      <h1><span data-i18n="welcome">Bienvenue</span><br><em data-i18n="place">à Trigoso</em></h1>
+      <p class="lead" data-i18n="lead">Tout ce qu’il faut pour se sentir chez soi, réuni au même endroit.</p>
+      <div class="actions"><a class="btn primary" href="#guide" data-i18n="openGuide">Ouvrir le guide</a><a class="btn ghost" href="#rates" data-i18n="seeRates">Voir les tarifs</a></div>
+    </div>
+    <div class="landscape" aria-hidden="true">
+      <svg viewBox="0 0 920 600"><circle cx="705" cy="95" r="58" fill="#f1ba72"/><path d="M0 330Q150 240 330 320t330-15 260 8v287H0Z" fill="#d6dfc4"/><path d="M0 385q170-65 340-10t320-15 260 12v228H0Z" fill="#3b6d63"/><path d="M0 455q170-44 350-2t350-24 220 10v161H0Z" fill="#76afa5"/><path d="M454 299h144v120H454z" fill="#f6ead8"/><path d="m440 309 86-72 86 72Z" fill="#c66b50"/><path d="M480 347h32v72h-32zm60 0h32v32h-32z" fill="#174b47"/><path d="M0 500q170-34 330 2t320-5 270 1" fill="none" stroke="#fff" stroke-opacity=".65" stroke-width="5"/></svg>
+    </div>
+    <a class="address" href="https://maps.app.goo.gl/U28YDhwNpAVBpk3G8" target="_blank" rel="noopener"><span class="map-icon">↗</span><span><small data-i18n="directions">Itinéraire</small><strong>Via Attilio Corte 4</strong><span>Loc. Trigoso · Sestri Levante (GE)</span></span></a>
+  </header>
+
+  <main id="main">
+    <section class="section" id="guide">
+      <div class="heading"><div><p class="eyebrow" data-i18n="manual">Manuel de la maison</p><h2 data-i18n="needHelp">Besoin d’aide ?</h2></div><p data-i18n="guideIntro">Les réponses rapides aux questions les plus courantes. Touchez une fiche pour afficher les instructions.</p></div>
+      <div class="guide-grid">
+        <details><summary><b class="icon">⌁</b><span><strong>Wi‑Fi</strong><small data-i18n="wifiSub">Connexion et routeur</small></span><b class="arrow">⌄</b></summary><div class="detail"><p data-i18n="wifiText">En cas de problème de connexion, déplacez le routeur du côté de la cuisine, à côté de la fenêtre.</p></div></details>
+        <details><summary><b class="icon">⌂</b><span><strong data-i18n="entry">Entrée</strong><small data-i18n="entrySub">Clés et accès</small></span><b class="arrow">⌄</b></summary><div class="detail"><p data-i18n="entryText">À l’intérieur du logement se trouvent un deuxième jeu de clés de la maison et le trousseau du garage, composé de trois clés et d’une télécommande :</p><ul><li data-i18n="garageKey1">une clé et la télécommande ouvrent le grand portail pour la voiture ;</li><li data-i18n="garageKey2">une clé ouvre le petit portillon piéton ;</li><li data-i18n="garageKey3">une clé ouvre la porte basculante du box.</li></ul></div></details>
+        <details><summary><b class="icon">♨</b><span><strong data-i18n="hotWater">Eau chaude</strong><small data-i18n="heater">Petit chauffe-eau</small></span><b class="arrow">⌄</b></summary><div class="detail"><p data-i18n="hotText">Le petit chauffe-eau fournit au maximum deux douches. Répartissez les douches au cours de la journée afin d’éviter de manquer d’eau chaude.</p></div></details>
+        <details><summary><b class="icon">❄</b><span><strong data-i18n="climate">Climatisation</strong><small data-i18n="climateSub">Ventilo-convecteur central</small></span><b class="arrow">⌄</b></summary><div class="detail"><p data-i18n="climateText">Les chambres sont climatisées par un seul ventilo-convecteur situé dans le couloir. Allumez-le à l’avance dans l’après-midi et laissez les portes des chambres ouvertes pour un bon confort.</p></div></details>
+        <details><summary><b class="icon">160</b><span><strong data-i18n="linens">Linge de maison</strong><small data-i18n="bedsSub">Dimensions des lits</small></span><b class="arrow">⌄</b></summary><div class="detail"><p data-i18n="linensText">Le linge de maison n’est pas fourni.</p><ul><li data-i18n="bed160">1 lit de 160 cm</li><li data-i18n="beds90">2 lits de 90 cm</li><li data-i18n="sofa140">1 canapé-lit de 140 cm</li></ul></div></details>
+        <details><summary><b class="icon">♻</b><span><strong data-i18n="waste">Déchets</strong><small data-i18n="wasteSub">Tri sélectif</small></span><b class="arrow">⌄</b></summary><div class="detail"><p data-i18n="wasteText">Le tri sélectif est obligatoire. Les conteneurs se trouvent en bas de la rue en descendant. Utilisez la clé triangulaire pour les ouvrir.</p><p data-i18n="wasteBags">Pour le plastique et les déchets non recyclables, utilisez le sac fourni.</p><a class="detail-link" href="https://content.apricaspa.it/sites/default/files/2025-06/sestri-levanti-guida-affitti-brevi-zona3.pdf" target="_blank" rel="noopener"><span data-i18n="wasteGuide">Consulter le guide Aprica · Zone 3</span> ↗</a></div></details>
+        <details><summary><b class="icon">I/O</b><span><strong data-i18n="appliances">Équipements</strong><small data-i18n="appliancesSub">Interrupteurs de sécurité</small></span><b class="arrow">⌄</b></summary><div class="detail"><p data-i18n="appliancesText">Si le chauffe-eau, les plaques de cuisson, le lave-linge ou le lave-vaisselle ne fonctionnent pas, vérifiez les interrupteurs I/O situés dans la cuisine. Pour le lave-linge, vérifiez également l’interrupteur dédié dans la salle de bains.</p><p data-i18n="inductionText">La puissance des plaques à induction est limitée en raison des caractéristiques de l’installation électrique. Lorsque plusieurs foyers sont utilisés en même temps, leur puissance peut être réduite : ce comportement est normal.</p></div></details>
+        <details><summary><b class="icon">✓</b><span><strong data-i18n="departure">Départ</strong><small data-i18n="departureSub">Liste de contrôle</small></span><b class="arrow">⌄</b></summary><div class="detail"><ul><li data-i18n="check1">Nettoyer l’appartement</li><li data-i18n="check2">Fermer le gaz et l’eau</li><li data-i18n="check3">Couper l’électricité au tableau général</li><li data-i18n="check4">Laisser la porte du réfrigérateur ouverte</li></ul></div></details>
+      </div>
+    </section>
+
+    <section class="section temporary" id="temporary">
+      <div class="heading"><div><p class="eyebrow" data-i18n="temporaryLabel">À surveiller</p><h2 data-i18n="temporaryTitle">Problèmes temporaires</h2></div><p data-i18n="temporaryIntro">Informations provisoires à connaître pendant le séjour.</p></div>
+      <article class="issue-card">
+        <span class="issue-icon" aria-hidden="true">!</span>
+        <div><span class="issue-status" data-i18n="temporaryStatus">En attente de réparation</span><h3 data-i18n="sinkDoorTitle">Porte sous l’évier</h3><p data-i18n="sinkDoorText">La charnière supérieure de la porte sous l’évier s’est détachée. Ouvrez-la avec précaution.</p></div>
+      </article>
+    </section>
+
+    <section class="useful" id="useful"><div class="section">
+      <div class="heading light"><div><p class="eyebrow" data-i18n="usefulLabel">Autour de la maison</p><h2 data-i18n="usefulTitle">Informations utiles</h2></div><p data-i18n="usefulIntro">Transports et bonnes adresses à garder sous la main.</p></div>
+      <a class="bus-card" href="https://www.amt.genova.it/amt/trasporto-multimodale/linee-bus-provinciali/tigullio-orientale-orario-estivo/sestri-levante-orario-estivo/" target="_blank" rel="noopener"><span class="useful-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 16V6c0-2 2-3 7-3s7 1 7 3v10M5 11h14M7 19h.01M17 19h.01M6 16h12v3H6z"/></svg></span><span><small data-i18n="transport">Transports</small><strong data-i18n="busTimes">Horaires des bus AMT</strong><span data-i18n="busArea">Sestri Levante et Riva Trigoso</span></span><b>↗</b></a>
+      <a class="bus-card train-card" href="https://iechub.rfi.it/ArriviPartenze/ArrivalsDepartures/Monitor?Arrivals=False&amp;PlaceId=310&amp;Search=" target="_blank" rel="noopener"><span class="useful-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V5c0-2 2-3 6-3s6 1 6 3v11M6 10h12M8 19l-2 3M16 19l2 3M8 16h.01M16 16h.01"/></svg></span><span><small data-i18n="trains">Trains</small><strong data-i18n="trainTimes">Départs en temps réel</strong><span data-i18n="trainStation">Gare de Riva Trigoso · RFI</span></span><b>↗</b></a>
+      <a class="bus-card shuttle-card" href="navette-estive-2026.jpg" target="_blank" rel="noopener"><span class="useful-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></span><span><small data-i18n="summerService">Service estival</small><strong data-i18n="shuttleTimes">Horaires des navettes estivales</strong><span data-i18n="shuttlePeriod">Campings · Riva Trigoso · Sestri Levante · du 1er au 23 août 2026</span></span><b>↗</b></a>
+      <div class="places-grid">
+        <article class="place-group"><p><span class="useful-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v8M4 3v5c0 2 1 3 3 3s3-1 3-3V3M7 11v10M16 3c-2 2-2 7 0 9h3V3h-3ZM18 12v9"/></svg></span><strong data-i18n="restaurants">Restaurants</strong></p><a href="https://www.google.com/maps/search/?api=1&query=Le+Gardenie+Sestri+Levante" target="_blank" rel="noopener"><span>Le Gardenie<small class="distance">1,9 km · Riva Trigoso</small></span><b>↗</b></a><a href="https://www.google.com/maps/search/?api=1&query=Caciosteria+Umbria+Sestri+Levante" target="_blank" rel="noopener"><span>Caciosteria Umbria<small class="distance">1,7 km · Riva Trigoso</small></span><b>↗</b></a></article>
+        <article class="place-group"><p><span class="useful-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 1 9 9H12V3ZM12 12 5.5 18.5A9 9 0 0 1 3 12h9Z"/><circle cx="15.5" cy="7.5" r=".8"/></svg></span><strong data-i18n="pizzerias">Pizzerias</strong></p><a href="https://www.google.com/maps/search/?api=1&query=I+Due+Gabbiani+Beach+Sestri+Levante" target="_blank" rel="noopener"><span>I Due Gabbiani Beach<small class="distance">2,1 km · Riva Trigoso</small></span><b>↗</b></a><a href="https://www.google.com/maps/search/?api=1&query=I+Due+Forni+Sestri+Levante" target="_blank" rel="noopener"><span>I Due Forni<small class="distance">3,9 km · Sestri Levante</small></span><b>↗</b></a></article>
+        <article class="place-group"><p><span class="useful-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14l-2 7a5 5 0 0 1-10 0L5 4ZM12 16v5M8 21h8"/></svg></span><strong data-i18n="aperitifs">Pubs et apéritifs</strong></p><a href="https://www.google.com/maps/search/?api=1&query=Rie+Bistrot+Sestri+Levante" target="_blank" rel="noopener"><span>Rìe Bistrot<small class="distance">2 km · Riva Trigoso</small></span><b>↗</b></a><a href="https://www.google.com/maps/search/?api=1&query=Bunker+Beach+Sestri+Levante" target="_blank" rel="noopener"><span>Bunker Beach<small class="distance">2 km · Riva Trigoso</small></span><b>↗</b></a><a href="https://www.google.com/maps/search/?api=1&query=Capocotta+Sestri+Levante" target="_blank" rel="noopener"><span>Capocotta<small class="distance">4,1 km · Sestri Levante</small></span><b>↗</b></a><a href="https://www.google.com/maps/search/?api=1&query=Borgo+Rena+Beach+Sestri+Levante" target="_blank" rel="noopener"><span>Borgo Renà Beach<small class="distance">1,9 km · Riva Trigoso</small></span><b>↗</b></a><a href="https://www.google.com/maps/search/?api=1&query=Bar+Quattro+Venti+Sestri+Levante" target="_blank" rel="noopener"><span>Bar Quattro Venti<small class="distance">1,9 km · Riva Trigoso</small></span><b>↗</b></a></article>
+        <article class="place-group"><p><span class="useful-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11h11l2 6H8l-2-4H3M14 11l3-4h3l1 4M9 20h.01M18 20h.01"/></svg></span><strong data-i18n="delivery">Livraisons à domicile</strong></p><a href="https://www.coopshop.it/" target="_blank" rel="noopener"><span><strong data-i18n="onlineGroceries">Courses en ligne</strong><small>CoopShop</small></span><b>↗</b></a><a href="https://www.justeat.it/" target="_blank" rel="noopener"><span><strong data-i18n="foodDelivery">Repas à domicile</strong><small data-i18n="useJustEat">Utiliser l’application Just Eat</small></span><b>↗</b></a></article>
+        <article class="place-group"><p><span class="useful-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1 12H5L4 8ZM8 8a4 4 0 0 1 8 0M9 12v4M15 12v4"/></svg></span><strong data-i18n="shopping">Courses</strong></p><a href="https://www.google.com/maps/search/?api=1&query=Supermercato+Di+Meglio+Via+della+Pergola+26+Sestri+Levante" target="_blank" rel="noopener"><span>Supermercato Di Meglio<small class="distance">1,7 km · Riva Trigoso</small></span><b>↗</b></a><a href="https://www.google.com/maps/search/?api=1&query=Panificio+Parchi+Riva+Trigoso" target="_blank" rel="noopener"><span>Panificio Parchi<small class="distance">2,2 km · Riva Trigoso</small></span><b>↗</b></a></article>
+        <article class="place-group"><p><span class="useful-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M10 17V7h3a3 3 0 0 1 0 6h-3"/></svg></span><strong data-i18n="parking">Stationnement</strong></p><a href="https://www.easypark.com/it-it" target="_blank" rel="noopener"><span><strong>EasyPark</strong><small data-i18n="easyParkText">Pour payer les parkings payants, il est conseillé d’installer l’application.</small></span><b>↗</b></a></article>
+      </div>
+    </div></section>
+
+    <section class="rates" id="rates"><div class="section">
+      <div class="heading light"><div><p class="eyebrow" data-i18n="stayContribution">Contribution au séjour</p><h2 data-i18n="simpleRates">Des tarifs simples</h2></div><p data-i18n="ratesIntro">Trois formules pensées pour la famille, les amis et nos proches.</p></div>
+      <div class="rate-grid">
+        <article class="rate-card featured"><span class="tag" data-i18n="withOwners">Propriétaires présents</span><p class="price"><strong>30€</strong><span data-i18n="perPersonWeek">/ personne / semaine</span></p><p data-i18n="withOwnersText">Pour les hôtes qui séjournent avec au moins l’un des propriétaires suivants :</p><p class="owners-list">Marine · Léna · Claudine · Thierry · Robert · Gaël · Fabien · Benjamin</p><ul><li data-i18n="allAges">Adultes et enfants compris</li><li data-i18n="maxGuests">Maximum 6 personnes</li></ul></article>
+        <article class="rate-card"><span class="tag" data-i18n="familyFriends">Famille et amis proches</span><p class="price"><strong>200€</strong><span data-i18n="perWeek">/ semaine</span></p><p data-i18n="withoutOwners">Utilisation de l’appartement sans la présence des propriétaires.</p></article>
+        <article class="rate-card"><span class="tag" data-i18n="acquaintances">Connaissances</span><p class="price"><strong>400€</strong><span data-i18n="perWeek">/ semaine</span></p><p data-i18n="withoutOwners">Utilisation de l’appartement sans la présence des propriétaires.</p></article>
+      </div>
+      <div class="notice"><b>!</b><p><strong data-i18n="noPets">Animaux non admis</strong><br><span data-i18n="noPetsText">Merci de nous aider à garder la maison adaptée à tous.</span></p></div>
+      <p class="fineprint" data-i18n="confirmation">Tarifs à usage privé, sous réserve de confirmation des propriétaires.</p>
+    </div></section>
+
+    <section class="section calendar-section" id="calendar">
+      <div class="heading"><div><p class="eyebrow" data-i18n="calendarLabel">Disponibilités</p><h2 data-i18n="calendarTitle">Calendrier des réservations</h2></div><p data-i18n="calendarIntro">Consultez les périodes déjà réservées avant de demander vos dates.</p></div>
+      <div class="calendar-shell">
+        <div class="calendar-topbar"><span><i></i><span data-i18n="calendarLegend">Les événements affichés correspondent aux périodes réservées</span></span><a href="https://calendar.google.com/calendar/u/0?cid=MGUzMmJhZTFkMjRiMDYxZDAxYjJmMjAwMDU0YzQzYTExODc2N2U1MTk5ZTdlNWU4NjI1ZTQ0ODA2NTU0ZjhjOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" rel="noopener"><span data-i18n="openCalendar">Ouvrir dans Google Calendar</span> ↗</a></div>
+        <div class="native-calendar" aria-label="Calendrier des réservations">
+          <div class="native-calendar-nav"><button type="button" id="calendar-prev" aria-label="Mois précédent">‹</button><strong id="calendar-month"></strong><button type="button" id="calendar-next" aria-label="Mois suivant">›</button></div>
+          <div class="calendar-weekdays" id="calendar-weekdays"></div>
+          <div class="calendar-grid" id="calendar-grid" aria-live="polite"></div>
+        </div>
+      </div>
+      <p class="calendar-note" data-i18n="calendarNote">Le calendrier est synchronisé automatiquement avec Google Calendar.</p>
+    </section>
+
+    <section class="section reminder"><div class="heading"><div><p class="eyebrow" data-i18n="reminder">Petit rappel</p><h2 data-i18n="beforeLeaving">Avant de partir</h2></div></div>
+      <ol><li><span>1</span><p><strong data-i18n="confirmDates">Confirmez les dates</strong><small data-i18n="confirmDatesText">Contactez les propriétaires pour vérifier la disponibilité.</small></p></li><li><span>2</span><p><strong data-i18n="arrangeArrival">Organisez l’arrivée</strong><small data-i18n="arrangeArrivalText">Convenez de l’heure et de la remise des clés.</small></p></li><li><span>3</span><p><strong data-i18n="enjoy">Profitez du séjour</strong><small data-i18n="enjoyText">Respectez la maison et profitez de la mer de Trigoso.</small></p></li></ol>
+      <div class="future"><span data-i18n="comingSoon">Prochainement</span><h3 data-i18n="onlineBooking">Réservation en ligne</h3><p data-i18n="bookingText">À l’avenir, vous pourrez demander vos dates directement depuis cette page.</p><button disabled data-i18n="notAvailable">Pas encore disponible</button></div>
+    </section>
+  </main>
+  <footer><a class="brand" href="#home"><span class="logo">CT</span><span>Casa Trigoso</span></a><p data-i18n="footerText">Un guide privé pour la famille et les amis.</p><a href="#home" data-i18n="backTop">Retour en haut ↑</a></footer>
+  <nav class="mobile-nav" aria-label="Navigation rapide"><a href="#home" class="active"><span>⌂</span><i data-i18n="navHome">Accueil</i></a><a href="#guide"><span>☷</span><i data-i18n="navGuide">Guide</i></a><a href="#rates"><span>€</span><i data-i18n="navRates">Tarifs</i></a><a href="https://maps.app.goo.gl/U28YDhwNpAVBpk3G8" target="_blank" rel="noopener"><span>⌖</span><i data-i18n="navMap">Carte</i></a></nav>
+</body>
+</html>
