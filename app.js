@@ -52,6 +52,14 @@ Object.assign(it, {
   openCalendar: 'Apri in Google Calendar',
   calendarNote: 'Il calendario è sincronizzato automaticamente con Google Calendar.'
 });
+Object.assign(it, {
+  linens: 'Biancheria per la casa',
+  bedsSub: 'Dimensioni dei letti',
+  linensText: 'La biancheria per la casa non è fornita.',
+  bed160: '1 letto da 160 cm',
+  beds90: '2 letti da 90 cm',
+  sofa140: '1 divano letto da 140 cm'
+});
 const fr = {};
 document.querySelectorAll('[data-i18n]').forEach(el => fr[el.dataset.i18n] = el.textContent);
 const dictionaries = {fr,it};
@@ -125,7 +133,7 @@ function renderCalendar(){
   }
 }
 
-fetch('calendar.ics',{cache:'no-store'}).then(response=>response.text()).then(text=>{bookingEvents=parseIcs(text);renderCalendar()}).catch(renderCalendar);
+fetch(`calendar.ics?v=${Date.now()}`,{cache:'no-store'}).then(response=>response.text()).then(text=>{bookingEvents=parseIcs(text);renderCalendar()}).catch(renderCalendar);
 document.getElementById('calendar-prev')?.addEventListener('click',()=>{calendarCursor=new Date(calendarCursor.getFullYear(),calendarCursor.getMonth()-1,1);renderCalendar()});
 document.getElementById('calendar-next')?.addEventListener('click',()=>{calendarCursor=new Date(calendarCursor.getFullYear(),calendarCursor.getMonth()+1,1);renderCalendar()});
 new MutationObserver(renderCalendar).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});

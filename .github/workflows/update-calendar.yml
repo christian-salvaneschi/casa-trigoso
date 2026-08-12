@@ -2,7 +2,7 @@ name: Update booking calendar
 
 on:
   schedule:
-    - cron: "17 * * * *"
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -14,7 +14,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Download public Google Calendar feed
-        run: curl --fail --silent --show-error --location "https://calendar.google.com/calendar/ical/0e32bae1d24b061d01b2f200054c43a118767e5199e7e5e8625e44806554f8c8%40group.calendar.google.com/public/basic.ics" --output calendar.ics
+        run: |
+          curl --fail --silent --show-error --location "https://calendar.google.com/calendar/ical/0e32bae1d24b061d01b2f200054c43a118767e5199e7e5e8625e44806554f8c8%40group.calendar.google.com/public/basic.ics" --output calendar.download.ics
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          source = Path("calendar.download.ics").read_text(encoding="utf-8").replace("\r\n", "\n")
+          source = re.sub(r"^DTSTAMP:.*\n", "", source, flags=re.MULTILINE)
+          events = re.findall(r"BEGIN:VEVENT\n.*?END:VEVENT\n?", source, flags=re.DOTALL)
+          events.sort(key=lambda event: re.search(r"DTSTART[^:]*:(\d{8})", event).group(1))
+          header = source.split("BEGIN:VEVENT", 1)[0]
+          footer = source.rsplit("END:VEVENT", 1)[1].lstrip("\n")
+          Path("calendar.ics").write_text(header + "".join(events) + footer, encoding="utf-8", newline="\n")
+          PY
       - name: Publish changes
         run: |
           if git diff --quiet -- calendar.ics; then exit 0; fi
